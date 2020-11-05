@@ -1,0 +1,8 @@
+/node_modules
+public/bundle.js.map
+public/styles.css
+public/styles.css.map
+public/bundle.js
+public/dist/bundle.js
+public/dist/main.css
+public/dist/bundle.js.LICENSE.txt
