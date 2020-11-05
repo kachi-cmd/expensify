@@ -3,20 +3,20 @@
 exports[`should render Header correctly 1`] = `
 <header>
   <h1>
-    Expensify
+    kachi's Expensify App
   </h1>
-  <NavLink
+  <[object Object]
     activeClassName="is-active"
     exact={true}
     to="/"
   >
     Dashboard
-  </NavLink>
-  <NavLink
+  </[object Object]>
+  <[object Object]
     activeClassName="is-active"
     to="/create"
   >
     Create Expense
-  </NavLink>
+  </[object Object]>
 </header>
 `;
