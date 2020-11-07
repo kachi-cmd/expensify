@@ -8,10 +8,11 @@ import selectExpensesTotal from '../selectors/expense_Total'
 // use the logic of expense total,format final figure with numeraljs
 // render both to the screen ... viewing *** expenses totaling ***
 
-const expenseWord = expensesCount ===1 ? 'expense' : 'expenses'
-const format = numeral(expensesTotal / 100).format('$0,0.00')
-
 const ExpenseSummary = ({expensesCount, expensesTotal})=>{
+  
+  const expenseWord = expensesCount ===1 ? 'expense' : 'expenses'
+  const format = numeral(expensesTotal / 100).format('$0,0.00')
+
     return(
     <div>
      { 
@@ -25,7 +26,7 @@ const mapStateToProps = (state) => {
     const visibleExpense = selectExpenses(state.expenses, state.filters)
     return {
       expensesCount: visibleExpense.length,
-      expensesTotal : selectExpensesTotal(state.expenses, state.filters)
+      expensesTotal : selectExpensesTotal(visibleExpense)
     };
   };
   
