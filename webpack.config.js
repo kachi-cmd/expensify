@@ -65,15 +65,5 @@ module.exports = (env) =>{
         contentBase: path.join(__dirname,'public'),
         publicPath: '/',
         historyApiFallback: true,
-        compress: true,
-        hotOnly: true,
-        port: 9000,
-        openPage: 'dashboard',
-        proxy: {
-          '/api': {
-            target: 'http://localhost:9010',
-            secure: false,
-          },
-        },
     }
 }}
