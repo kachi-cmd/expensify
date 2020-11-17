@@ -1,23 +1,29 @@
 import uuid from 'uuid';
+import dataBase from '../firebase/firebase'
 
 // ADD_EXPENSE
-export const addExpense = (
-  {
-    description = '',
-    note = '',
-    amount = 0,
-    createdAt = 0
-  } = {}
-) => ({
+export const addExpense = (expense) => ({
   type: 'ADD_EXPENSE',
-  expense: {
-    id: uuid(),
-    description,
-    note,
-    amount,
-    createdAt
-  }
+  expense
 });
+// for connecting firebase to redux --- CRUD -> create (1st stage of CRUD)
+export const startAddExpense= (expenseData = {})=>{
+  return (dispatch)=>{
+    const{
+      description = '',
+      note = '',
+      amount = 0,
+      createdAt = 0
+    } = expenseData;
+    const expense = {description, note, amount, createdAt}
+  return  dataBase.ref('expenses').push(expense).then((ref)=>{
+     dispatch(addExpense({
+       id: ref.key,
+       ...expense
+     }));
+   })
+  }
+}
 
 // REMOVE_EXPENSE
 export const removeExpense = ({ id } = {}) => ({

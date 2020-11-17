@@ -19,6 +19,7 @@ const firebaseConfig = {
 
   const dataBase = firebase.database()
 
+  export {firebase , dataBase as default };
 
 //   dataBase.ref('expense').push({
 //     note: 'me myself and i',
@@ -40,20 +41,20 @@ const firebaseConfig = {
 //     console.log(expense)
 // })
 
-//child_removed
-dataBase.ref().on('child_removed', (snapshot)=>{
-    console.log(snapshot.key, snapshot.val())
-})
+// //child_removed
+// dataBase.ref().on('child_removed', (snapshot)=>{
+//     console.log(snapshot.key, snapshot.val())
+// })
 
-//child_changed
-dataBase.ref().on('child_changed', (snapshot)=>{
-    console.log(snapshot.key, snapshot.val())
-})  
+// //child_changed
+// dataBase.ref().on('child_changed', (snapshot)=>{
+//     console.log(snapshot.key, snapshot.val())
+// })  
 
-//child_added
-dataBase.ref().on('child_added', (snapshot)=>{
-    console.log(snapshot.key, snapshot.val())
-})
+// //child_added
+// dataBase.ref().on('child_added', (snapshot)=>{
+//     console.log(snapshot.key, snapshot.val())
+// })
 
 // dataBase.ref().once('value')
 // .then((snapshot)=>{
