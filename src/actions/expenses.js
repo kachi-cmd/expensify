@@ -37,3 +37,26 @@ export const editExpense = (id, updates) => ({
   id,
   updates
 });
+
+//SET_EXPENSES
+export const setExpenses = (expense) => ({
+  type: 'SET_EXPENSES',
+  expense
+})
+// for connecting firebase to redux --- CRUD -> reading (2nd stage of CRUD)
+export const startSetExpenses= ()=>{
+  return (dispatch)=>{
+  return  dataBase.ref('expenses').once('value').then((snapshot)=>{
+       const expense = [];
+
+       snapshot.forEach((childSnapshot)=>{
+        expense.push({
+            id: childSnapshot.key,
+          ...childSnapshot.val()
+       })
+       })
+
+     dispatch(setExpenses(expense));
+   })
+  }
+}
