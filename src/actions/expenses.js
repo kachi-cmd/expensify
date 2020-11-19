@@ -30,6 +30,14 @@ export const removeExpense = ({ id } = {}) => ({
   type: 'REMOVE_EXPENSE',
   id
 });
+// for connecting firebase to redux --- CRUD -> deleting (4th stage of CRUD)
+export const startRemoveExpense =({ id } = {})=>{
+  return (dispatch)=>{
+   return dataBase.ref(`expenses/${id}`).remove().then(()=>{
+        dispatch(removeExpense({id}))
+    })
+  }
+};
 
 // EDIT_EXPENSE
 export const editExpense = (id, updates) => ({
