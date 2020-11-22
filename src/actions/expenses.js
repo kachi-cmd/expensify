@@ -45,6 +45,14 @@ export const editExpense = (id, updates) => ({
   id,
   updates
 });
+// for connecting firebase to redux --- CRUD -> updating/edit (3rd stage of CRUD)
+export const startEditExpense = (id, updates)=>{
+  return (dispatch)=>{
+    return dataBase.ref(`expenses/${id}`).update(updates).then(()=>{
+      dispatch(editExpense(id,updates))
+    })
+  }
+}
 
 //SET_EXPENSES
 export const setExpenses = (expense) => ({
