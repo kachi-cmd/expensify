@@ -18,8 +18,9 @@ const firebaseConfig = {
   firebase.analytics();
 
   const dataBase = firebase.database()
+  const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 
-  export {firebase , dataBase as default };
+  export {firebase ,googleAuthProvider, dataBase as default };
 
 //   dataBase.ref('expense').push({
 //     note: 'me myself and i',

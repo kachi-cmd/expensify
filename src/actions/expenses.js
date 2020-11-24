@@ -8,7 +8,8 @@ export const addExpense = (expense) => ({
 });
 // for connecting firebase to redux --- CRUD -> create (1st stage of CRUD)
 export const startAddExpense= (expenseData = {})=>{
-  return (dispatch)=>{
+  return (dispatch, getState)=>{
+    const uid = getState().auth.uid
     const{
       description = '',
       note = '',
@@ -16,7 +17,7 @@ export const startAddExpense= (expenseData = {})=>{
       createdAt = 0
     } = expenseData;
     const expense = {description, note, amount, createdAt}
-  return  dataBase.ref('expenses').push(expense).then((ref)=>{
+  return  dataBase.ref(`users/${uid}/expenses`).push(expense).then((ref)=>{
      dispatch(addExpense({
        id: ref.key,
        ...expense
@@ -32,8 +33,11 @@ export const removeExpense = ({ id } = {}) => ({
 });
 // for connecting firebase to redux --- CRUD -> deleting (4th stage of CRUD)
 export const startRemoveExpense =({ id } = {})=>{
-  return (dispatch)=>{
-   return dataBase.ref(`expenses/${id}`).remove().then(()=>{
+  return (dispatch, getState)=>{
+
+    const uid = getState().auth.uid
+
+   return dataBase.ref(`users/${uid}/expenses/${id}`).remove().then(()=>{
         dispatch(removeExpense({id}))
     })
   }
@@ -47,8 +51,11 @@ export const editExpense = (id, updates) => ({
 });
 // for connecting firebase to redux --- CRUD -> updating/edit (3rd stage of CRUD)
 export const startEditExpense = (id, updates)=>{
-  return (dispatch)=>{
-    return dataBase.ref(`expenses/${id}`).update(updates).then(()=>{
+  return (dispatch, getState)=>{
+
+    const uid = getState().auth.uid
+
+    return dataBase.ref(`users/${uid}/expenses/${id}`).update(updates).then(()=>{
       dispatch(editExpense(id,updates))
     })
   }
@@ -61,8 +68,11 @@ export const setExpenses = (expense) => ({
 })
 // for connecting firebase to redux --- CRUD -> reading (2nd stage of CRUD)
 export const startSetExpenses= ()=>{
-  return (dispatch)=>{
-  return  dataBase.ref('expenses').once('value').then((snapshot)=>{
+  return (dispatch, getState)=>{
+
+    const uid = getState().auth.uid
+
+  return  dataBase.ref(`users/${uid}/expenses`).once('value').then((snapshot)=>{
        const expense = [];
 
        snapshot.forEach((childSnapshot)=>{
