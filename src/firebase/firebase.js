@@ -4,14 +4,14 @@ import 'firebase/auth'
 import  'firebase/analytics'
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBeOFv-eehRuNfLj1QkbsI9D4IjhhqLnO8",
-    authDomain: "expensify-kachi-cmd.firebaseapp.com",
-    databaseURL: "https://expensify-kachi-cmd.firebaseio.com",
-    projectId: "expensify-kachi-cmd",
-    storageBucket: "expensify-kachi-cmd.appspot.com",
-    messagingSenderId: "708686030648",
-    appId: "1:708686030648:web:a20e8ef6f9e538bac883cd",
-    measurementId: "G-FJSYTF0CRY"
+  apiKey: process.env.FIREBASE_API_KEY,
+  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+  databaseURL: process.env.FIREBASE_DATABASE_URL,
+  projectId: process.env.FIREBASE_PROJECT_ID,
+  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.FIREBASE_APP_ID,
+  measurementId: process.env.FIREBASE_MEASUREMENT_ID,
   };
 
   firebase.initializeApp(firebaseConfig);

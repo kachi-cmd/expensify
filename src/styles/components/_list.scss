@@ -1,0 +1,57 @@
+.list-header{
+    background: $off-white;
+    border: 1px solid darken($color: $off-white, $amount: 7%);
+    color: $grey;
+    padding: $s-size $m-size;
+    display: flex;
+    justify-content: space-between;
+}
+.list-item{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid darken($color: $off-white, $amount: 7%);
+    border-top: none;
+    color: $dark-grey; 
+    padding: $s-size;
+    text-decoration: none;
+    &:hover{
+        background: $off-white;
+    }
+    transition: background .3s ease;
+    @media (min-width: $desktop-breakpoint){
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: $m-size;
+    }
+}
+.list-item__title{
+    margin: 0%;
+    word-break: break-all;
+}
+.list-item__subtitle{
+font-size: $font-size-small;
+color: $grey;
+}
+.list-item__data{
+ margin: $s-size 0 0 0;
+ @media (min-width: $desktop-breakpoint){
+  margin: 0%;
+  padding-left: $s-size; 
+}
+}
+.list-item--message{
+    align-items: center;
+    justify-content: center;
+    padding: $m-size;
+    color: $grey;
+    &:hover{
+        background: none;
+    }
+}
+.list-body{
+  margin-bottom: $m-size;
+  @media (min-width: $desktop-breakpoint){
+   margin-bottom: $l-size;  
+}
+}
