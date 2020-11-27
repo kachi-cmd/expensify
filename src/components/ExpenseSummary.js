@@ -12,7 +12,7 @@ import selectExpensesTotal from '../selectors/expense_Total'
 export const ExpenseSummary = ({expensesCount, expensesTotal})=>{
   
   const expenseWord = expensesCount ===1 ? 'expense' : 'expenses'
-  const format = numeral(expensesTotal / 100).format('$0,0.00')
+  const format = 'N' + numeral(expensesTotal / 100).format('0,0.00')
 
     return(
     <div className="page-header">
